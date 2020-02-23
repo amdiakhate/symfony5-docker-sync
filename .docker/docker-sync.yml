@@ -1,0 +1,13 @@
+version: '2'
+
+options:
+  compose-file-path: 'docker-compose.yml'
+  verbose: true
+
+syncs:
+  app-sync: # the name of your sync container. What you choose doesn't matter however it's important that it is unique, it can't be the same as your app container for example.
+    src: '../symfony'
+    sync_userid: '33' # for most php applications this should be the www-data user id
+    sync_excludes: # what shouldn't be synced between host and container
+      - '.git'
+      - '.docker'
